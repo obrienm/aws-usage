@@ -1,0 +1,22 @@
+<configuration>
+
+    <!--
+    This logback config, the default for play to pick up, is used on dev machines.
+    In prod, our upstart script overrides this use to application-logger-PROD.xml instead,
+    see serf.conf
+    -->
+    <contextName>aws-usage</contextName>
+
+    <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%coloredLevel %logger{15} - %message%n%xException{5}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
